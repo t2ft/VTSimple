@@ -75,6 +75,7 @@ MainWidget::MainWidget(QWidget *parent)
     SilentCall(ui->devAddr)->setValue(m_devAddr);
     SilentCall(ui->setTemp)->setValue(m_setTemp);
     SilentCall(ui->updateInt)->setValue(m_updateInt);
+    createDevice(m_port, m_devAddr);
     m_idUpdateTimer = startTimer(m_updateInt*1000);
 }
 
@@ -93,11 +94,15 @@ bool MainWidget::createDevice(const QString &port, int addr)
     ui->nominalTemp->setText("-/-");
     ui->actualTemp->setText("-/-");
     ui->devStatus->setText("-/-");
+    ui->controlGroup->setEnabled(false);
+    ui->statusGroup->setEnabled(false);
     m_dev = new VT4002(port, addr);
     if (m_dev != nullptr) {
         if (m_dev->isValid()) {
             connect(m_dev, &VT4002::info, this, &MainWidget::updateInfo);
             m_dev->requestInfo();
+            ui->controlGroup->setEnabled(true);
+            ui->statusGroup->setEnabled(true);
             qDebug() << "device created successfully";
             return true;
         } else {
