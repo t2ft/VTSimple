@@ -24,7 +24,7 @@ void VT4002::requestInfo()
 {
     if (isValid()) {
         QString s = QString("$%1I\r").arg(m_addr, 2, 10, QLatin1Char('0'));
-        qDebug() << "requestInfo ->" << s;
+        //qDebug() << "requestInfo ->" << s;
         m_port->write(s.toLatin1());
     }
 }

@@ -23,19 +23,23 @@ private slots:
     void on_devAddr_valueChanged(int arg1);
     void on_comPort_currentIndexChanged(int index);
     void on_updateInt_valueChanged(int arg1);
-    void on_setTemp_valueChanged(double arg1);
+    void on_setTemp_editingFinished();
     void on_doSet_clicked();
 
     void updateInfo(double nomTemp, double actTemp, bool isOn);
+    void updateComboIndex();
+
 
 private:
-    bool createDevice();
-    bool createDevice(const QString &portName);
-    bool createDevice(int addr);
     bool createDevice(const QString &portName, int addr);
 
     Ui::VTSimple *ui;
     int     m_idUpdateTimer;
+    int     m_comportIndex;
+    QString m_port;
+    int     m_devAddr;
+    int     m_updateInt;
+    double  m_setTemp;
     VT4002  *m_dev;
 };
 #endif // MAINWIDGET_H

@@ -47,7 +47,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comPort"/>
+      <widget class="QComboBox" name="comPort">
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <property name="duplicatesEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -234,7 +241,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>40</height>
+             <height>20</height>
             </size>
            </property>
            <property name="text">
@@ -253,7 +260,7 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>40</height>
+             <height>20</height>
             </size>
            </property>
            <property name="text">
